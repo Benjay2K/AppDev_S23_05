@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AppDev_S23_05</string>
+
+    <string-array name="unit_conversions">
+        <item>Meter to Inch</item>
+        <item>Celsius to Fahrenheit</item>
+        <item>Inch to Meter</item>
+        <item>Fahrenheit to Celsius</item>
+    </string-array>
+</resources>
