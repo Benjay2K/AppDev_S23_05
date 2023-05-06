@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var measurementActivityButton: Button
     private lateinit var converterActivityButton: Button
+    private lateinit var listViewActivityButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         converterActivityButton = findViewById(R.id.converterActivityButton)
         converterActivityButton.setOnClickListener{
             val intent = Intent(this, ConverterActivity::class.java)
+            startActivity(intent)
+        }
+
+        listViewActivityButton = findViewById(R.id.listViewActivityButton)
+        listViewActivityButton.setOnClickListener{
+            val intent = Intent(this, ListViewActivity::class.java)
             startActivity(intent)
         }
     }
