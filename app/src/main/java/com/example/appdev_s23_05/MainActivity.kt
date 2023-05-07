@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var measurementActivityButton: Button
     private lateinit var converterActivityButton: Button
     private lateinit var listViewActivityButton: Button
+    private lateinit var chatActivityButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         listViewActivityButton = findViewById(R.id.listViewActivityButton)
         listViewActivityButton.setOnClickListener{
             val intent = Intent(this, ListViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        chatActivityButton = findViewById(R.id.chatActivityButton)
+        chatActivityButton.setOnClickListener{
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
         }
     }
