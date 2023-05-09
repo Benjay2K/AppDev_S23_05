@@ -43,34 +43,34 @@ class ChatActivity : AppCompatActivity() {
             Message("Anakin", "12:50 PM", "Well, I prefer a little chaos in my code.", MessageType.INCOMING),
             Message("Obi-Wan", "12:55 PM", "Then you are lost!", MessageType.OUTGOING),
         )
-
+// Initialize and set the adapter to the recycler view
         val adapter = CustomAdapter(messages)
         recyclerView.adapter = adapter
     }
 
 }
-
+// Data class to represent a single chat message
 data class Message(
     val senderName: String,
     val dateInfo: String,
     val messageText: String,
     val messageType: MessageType
 )
-
+// Enumeration to represent the type of message (incoming or outgoing)
 enum class MessageType {
     INCOMING,
     OUTGOING
 }
-
+// Adapter class for the recycler view
 class CustomAdapter(private val messageList: ArrayList<Message>) :
     RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
-
+    // View holder class to represent a single message item
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val senderTextView: TextView = itemView.findViewById(R.id.senderTextView)
         val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         val messageTextView: TextView = itemView.findViewById(R.id.messageTextView)
     }
-
+    // Creates and returns a new view holder object when needed
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == com.example.appdev_s23_05.MessageType.INCOMING.ordinal) {
@@ -81,18 +81,18 @@ class CustomAdapter(private val messageList: ArrayList<Message>) :
             CustomViewHolder(view)
         }
     }
-
+    // Binds data to the view holder objects
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val currentItem = messageList[position]
         holder.senderTextView.text = currentItem.senderName
         holder.timeTextView.text = currentItem.dateInfo
         holder.messageTextView.text = currentItem.messageText
     }
-
+    // Returns the number of messages in the list
     override fun getItemCount(): Int {
         return messageList.size
     }
-
+    // Returns the view type of the message (incoming or outgoing)
     override fun getItemViewType(position: Int): Int {
         return messageList[position].messageType.ordinal
     }
